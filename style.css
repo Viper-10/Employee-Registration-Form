@@ -148,7 +148,12 @@ form {
   background-color: black;
   color: white;
 }
-
+.error-message {
+  color: rgb(252, 97, 97);
+  margin: 2px auto;
+  font-size: 0.8rem;
+  text-align: center;
+}
 @media (max-width: 768px) {
   .input-control-group > label {
     margin-bottom: 10px;

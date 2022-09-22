@@ -24,12 +24,18 @@ phoneNumberInput.addEventListener("focusout", phoneNumberValidator);
 personalEmailInput.addEventListener("focusout", emailValidator);
 employeeIdInput.addEventListener("focusout", employeeIdValidator);
 function validator(inputElement, validatorFunction, message) {
+    var _a;
+    const errorMessageDiv = (_a = inputElement.parentElement) === null || _a === void 0 ? void 0 : _a.nextElementSibling;
     if (!validatorFunction(inputElement.value)) {
         inputElement.style.borderColor = "red";
         inputElement.style.borderWidth = "4px";
+        if (errorMessageDiv)
+            errorMessageDiv.textContent = message;
         setTimeout(() => {
             inputElement.style.borderColor = "transparent";
             inputElement.style.borderWidth = "2px";
+            if (errorMessageDiv)
+                errorMessageDiv.textContent = "";
         }, 1500);
         return false;
     }
@@ -63,14 +69,28 @@ function formSubmitHandler(e) {
     const phoneNumber = phoneNumberInput.value.trim();
     const personalEmail = personalEmailInput.value.trim();
     const designation = designationInput.value.trim();
-    validator(personalEmailInput, validEmail, "Invalid Email id");
-    validator(firstNameInput, validName, "Invalid first name");
-    validator(lastNameInput, validName, "Invalid last name");
-    validator(panIdInput, validPanId, "Invalid Pan card id");
-    validator(aadharIdInput, validAadharId, "Invalid Aadhar id");
-    validator(phoneNumberInput, validPhoneNumber, "Invalid Phone number");
-    validator(designationInput, validDesignation, "Invalid designation");
-    validator(employeeIdInput, validEmployeeId, "Invalid Employeeid");
+    let validEntry = 1;
+    validEntry =
+        validEntry & +validator(personalEmailInput, validEmail, "Invalid Email id");
+    validEntry =
+        validEntry & +validator(firstNameInput, validName, "Invalid first name");
+    validEntry =
+        validEntry & +validator(lastNameInput, validName, "Invalid last name");
+    validEntry =
+        validEntry & +validator(panIdInput, validPanId, "Invalid Pan card id");
+    validEntry =
+        validEntry & +validator(aadharIdInput, validAadharId, "Invalid Aadhar id");
+    validEntry =
+        validEntry &
+            +validator(phoneNumberInput, validPhoneNumber, "Invalid Phone number");
+    validEntry =
+        validEntry &
+            +validator(designationInput, validDesignation, "Invalid designation");
+    validEntry =
+        validEntry &
+            +validator(employeeIdInput, validEmployeeId, "Invalid Employeeid");
+    if (!validEntry)
+        return;
     console.log(employeeId, firstName, lastName, aadharId, panId, phoneNumber, personalEmail, designation);
 }
 function validEmployeeId(id) {
