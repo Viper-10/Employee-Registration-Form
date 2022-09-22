@@ -1,4 +1,11 @@
 "use strict";
+var Designation;
+(function (Designation) {
+    Designation["INTERN"] = "intern";
+    Designation["UX_ENGINEER"] = "ux-engineer";
+    Designation["BACKEND_DEVELOPER"] = "backend-developer";
+    Designation["FRONTEND_DEVELOPER"] = "frontend-developer";
+})(Designation || (Designation = {}));
 const firstNameInput = document.getElementById("first-name");
 const lastNameInput = document.getElementById("last-name");
 const employeeIdInput = (document.getElementById("employee-id"));
@@ -15,6 +22,7 @@ aadharIdInput.addEventListener("focusout", aadharInputValidator);
 panIdInput.addEventListener("focusout", panInputValidator);
 phoneNumberInput.addEventListener("focusout", phoneNumberValidator);
 personalEmailInput.addEventListener("focusout", emailValidator);
+employeeIdInput.addEventListener("focusout", employeeIdValidator);
 function validator(inputElement, validatorFunction, message) {
     if (!validatorFunction(inputElement.value)) {
         inputElement.style.borderColor = "red";
@@ -22,10 +30,13 @@ function validator(inputElement, validatorFunction, message) {
         setTimeout(() => {
             inputElement.style.borderColor = "transparent";
             inputElement.style.borderWidth = "2px";
-        }, 2000);
+        }, 1500);
         return false;
     }
     return true;
+}
+function employeeIdValidator(e) {
+    validator(e.target, validEmployeeId, "Invalid Employee id");
 }
 function emailValidator(e) {
     validator(e.target, validEmail, "Invalid Email id");
@@ -56,8 +67,14 @@ function formSubmitHandler(e) {
     validator(firstNameInput, validName, "Invalid first name");
     validator(lastNameInput, validName, "Invalid last name");
     validator(panIdInput, validPanId, "Invalid Pan card id");
+    validator(aadharIdInput, validAadharId, "Invalid Aadhar id");
     validator(phoneNumberInput, validPhoneNumber, "Invalid Phone number");
+    validator(designationInput, validDesignation, "Invalid designation");
+    validator(employeeIdInput, validEmployeeId, "Invalid Employeeid");
     console.log(employeeId, firstName, lastName, aadharId, panId, phoneNumber, personalEmail, designation);
+}
+function validEmployeeId(id) {
+    return id.trim().length > 0;
 }
 function validEmail(email) {
     const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -107,5 +124,8 @@ function validPanId(id) {
         }
     }
     return true;
+}
+function validDesignation(designation) {
+    return Object.values(Designation).includes(designation);
 }
 //# sourceMappingURL=app.js.map

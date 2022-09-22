@@ -1,3 +1,9 @@
+enum Designation {
+  INTERN = "intern",
+  UX_ENGINEER = "ux-engineer",
+  BACKEND_DEVELOPER = "backend-developer",
+  FRONTEND_DEVELOPER = "frontend-developer",
+}
 const firstNameInput = <HTMLInputElement>document.getElementById("first-name");
 const lastNameInput = <HTMLInputElement>document.getElementById("last-name");
 const employeeIdInput = <HTMLInputElement>(
@@ -26,6 +32,7 @@ aadharIdInput.addEventListener("focusout", aadharInputValidator);
 panIdInput.addEventListener("focusout", panInputValidator);
 phoneNumberInput.addEventListener("focusout", phoneNumberValidator);
 personalEmailInput.addEventListener("focusout", emailValidator);
+employeeIdInput.addEventListener("focusout", employeeIdValidator);
 
 function validator(
   inputElement: HTMLInputElement,
@@ -39,11 +46,14 @@ function validator(
     setTimeout(() => {
       inputElement.style.borderColor = "transparent";
       inputElement.style.borderWidth = "2px";
-    }, 2000);
+    }, 1500);
     return false;
   }
 
   return true;
+}
+function employeeIdValidator(e: any) {
+  validator(e.target, validEmployeeId, "Invalid Employee id");
 }
 function emailValidator(e: any) {
   validator(e.target, validEmail, "Invalid Email id");
@@ -63,6 +73,7 @@ function panInputValidator(e: any) {
 function phoneNumberValidator(e: any) {
   validator(e.target, validPhoneNumber, "Invalid Phone number");
 }
+
 function formSubmitHandler(e: any): void {
   e.preventDefault();
   const employeeId = employeeIdInput.value.trim();
@@ -78,8 +89,10 @@ function formSubmitHandler(e: any): void {
   validator(firstNameInput, validName, "Invalid first name");
   validator(lastNameInput, validName, "Invalid last name");
   validator(panIdInput, validPanId, "Invalid Pan card id");
+  validator(aadharIdInput, validAadharId, "Invalid Aadhar id");
   validator(phoneNumberInput, validPhoneNumber, "Invalid Phone number");
-
+  validator(designationInput, validDesignation, "Invalid designation");
+  validator(employeeIdInput, validEmployeeId, "Invalid Employeeid");
   console.log(
     employeeId,
     firstName,
@@ -91,6 +104,11 @@ function formSubmitHandler(e: any): void {
     designation
   );
 }
+
+function validEmployeeId(id: string): boolean {
+  return id.trim().length > 0;
+}
+
 function validEmail(email: string) {
   const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -146,4 +164,10 @@ function validPanId(id: string): boolean {
   }
 
   return true;
+}
+
+function validDesignation(designation: string): boolean {
+  return Object.values(Designation).includes(
+    designation as unknown as Designation
+  );
 }

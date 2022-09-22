@@ -113,6 +113,16 @@ form {
   border-bottom: 2px solid transparent;
   padding: 0.5rem;
 }
+.input-control-group select {
+  display: inline-block;
+  background-color: #ddd;
+  width: 60%;
+  border-bottom: 2px solid transparent;
+  padding: 0.5rem;
+}
+.input-control-group option {
+  background-color: red;
+}
 .input-control-group input:focus {
   outline: none;
   border-bottom: 2px solid var(--blue-900);
@@ -120,14 +130,18 @@ form {
 .submit-section {
   margin-top: 1rem;
   display: flex;
-  justify-content: space-between;
-  padding-right: 2rem;
+  justify-content: center;
   gap: 20px;
 }
 .btn {
   padding: 0.5rem;
   border-radius: 4px;
   transition: 0.3s transform;
+}
+.login-btn {
+  border-radius: 4px;
+  background-color: var(--yellow-900);
+  color: black;
 }
 .submit-btn {
   border-radius: 4px;
@@ -172,6 +186,11 @@ form {
   .submit-btn:hover {
     background-color: var(--yellow-900);
     color: var(--dark-900);
+    cursor: pointer;
+  }
+  .login-btn:hover {
+    background-color: var(--dark-900);
+    color: var(--yellow-900);
     cursor: pointer;
   }
 }

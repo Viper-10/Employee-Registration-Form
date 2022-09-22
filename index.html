@@ -78,13 +78,20 @@
               </div>
               <div class="input-control-group">
                 <label for="designation">Designation:</label>
-                <input type="text" id="designation" placeholder="Designation" />
+                <!-- <input type="text" id="designation" placeholder="Designation" /> -->
+                <select name="designation" id="designation">
+                  <option value="choose" selected disabled>Choose</option>
+                  <option value="ux-engineer">Ux Engineer</option>
+                  <option value="intern">Intern</option>
+                  <option value="backend-developer">Backend Developer</option>
+                  <option value="frontend-developer">Frontend Developer</option>
+                </select>
               </div>
             </div>
 
             <div class="submit-section">
               <div class="login-wrapper">
-                Already an employee? <a href="#">Login here</a>
+                <button class="btn login-btn">Login</button>
               </div>
               <div class="submit-wrapper">
                 <input type="submit" value="Register" class="btn submit-btn" />
