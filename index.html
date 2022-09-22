@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevRev Employee Registration</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./dist/app.js" defer></script>
+  </head>
+  <body>
+    <div class="circle-top-right"></div>
+    <header>
+      <div class="logo-wrapper">
+        <img src="./logo.jpeg" alt="skahfkj" class="logo" />
+      </div>
+      <div class="devrev-header">DevRev</div>
+    </header>
+    <main>
+      <div class="center-div">
+        <div class="form-container">
+          <div class="form-intro">
+            <h1 class="intro-heading">Welcome</h1>
+            Hey! Glad to have you here at DevRev, hope you have a good time
+            here.
+          </div>
+          <form class="form">
+            <div class="form-header">
+              <h1 class="form-heading">Register</h1>
+            </div>
+
+            <div class="input-fields-wrapper">
+              <div class="input-control-group">
+                <label for="employee-id">Employee id:</label>
+                <input type="text" id="employee-id" placeholder="Employee id" />
+              </div>
+              <div class="input-control-group">
+                <label for="first-name">First name:</label>
+                <input type="text" id="first-name" placeholder="First name" />
+              </div>
+              <div class="input-control-group">
+                <label for="last-name">Last name:</label>
+                <input type="text" id="last-name" placeholder="Last name" />
+              </div>
+              <div class="input-control-group">
+                <label for="personal-email">Personal email:</label>
+                <input
+                  type="email"
+                  id="personal-email"
+                  placeholder="Personal email"
+                />
+              </div>
+              <div class="input-control-group">
+                <label for="aadhar-card-id">Aadhar id </label>
+                <input
+                  type="text"
+                  name="aadhar-card-id"
+                  id="aadhar-card-id"
+                  placeholder="Aadhar card id"
+                />
+              </div>
+              <div class="input-control-group">
+                <label for="pan-card-id">Pan card</label>
+                <input
+                  type="text"
+                  name="pan-card-id"
+                  id="pan-card-id"
+                  placeholder="Pan card id"
+                />
+              </div>
+              <div class="input-control-group">
+                <label for="phone-number">Phone number</label>
+                <input
+                  type="text"
+                  id="phone-number"
+                  placeholder="Phone number"
+                />
+              </div>
+              <div class="input-control-group">
+                <label for="designation">Designation:</label>
+                <input type="text" id="designation" placeholder="Designation" />
+              </div>
+            </div>
+
+            <div class="submit-section">
+              <div class="login-wrapper">
+                Already an employee? <a href="#">Login here</a>
+              </div>
+              <div class="submit-wrapper">
+                <input type="submit" value="Register" class="btn submit-btn" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
