@@ -155,10 +155,10 @@ form {
   text-align: center;
 }
 @media (max-width: 768px) {
-  .input-control-group > label {
+  .input-control-group label {
     margin-bottom: 10px;
   }
-  .input-control-group > input {
+  .input-control-group input {
     width: 100%;
   }
   .submit-section .login {
