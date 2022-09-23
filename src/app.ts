@@ -68,7 +68,11 @@ function aadharInputValidator(e: any) {
 }
 
 function nameInputValidator(e: any) {
-  validator(e.target, validName, "Invalid name");
+  validator(
+    e.target,
+    validName,
+    `Invalid ${e.target.id === "first-name" ? "first " : "last "}name`
+  );
 }
 
 function panInputValidator(e: any) {

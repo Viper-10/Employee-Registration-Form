@@ -51,7 +51,7 @@ function aadharInputValidator(e) {
     validator(e.target, validAadharId, "Invalid Aadhar id");
 }
 function nameInputValidator(e) {
-    validator(e.target, validName, "Invalid first name");
+    validator(e.target, validName, `Invalid ${e.target.id === "first-name" ? "first " : "last "}name`);
 }
 function panInputValidator(e) {
     validator(e.target, validPanId, "Invalid Pan card id");
